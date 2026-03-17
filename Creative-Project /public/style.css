@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0E0F13;
+    color: #E5E7EB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.15), transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    background: #1A1F2B;
+    padding: 40px;
+    border-radius: 16px;
+    width: 320px;
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    position: relative;
+    display: inline-block;
+}
+
+h1::before,
+h1::after {
+    content: "Digital Doppelgänger";
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.7;
+}
+
+h1::before {
+    color: #00F5FF;
+    transform: translate(-2px, 0);
+    animation: glitch 2s infinite;
+}
+
+h1::after {
+    color: #FF3B3B;
+    transform: translate(2px, 0);
+    animation: glitch 2s infinite reverse;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* ===== INPUTS ===== */
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #0E0F13;
+    color: white;
+    border: 1px solid #2A2F3C;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #00F5FF;
+    box-shadow: 0 0 8px #00F5FF;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #00F5FF;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00cfd4;
+    transform: scale(1.03);
+}
+
+.toggle {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #9CA3AF;
+    cursor: pointer;
+}
+
+.toggle span {
+    color: #00F5FF;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Digital Doppelgänger</h1>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" method="POST" action="/login">
+            <input name="username" type="text" placeholder="Username" required>
+            <input name="password" type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div class="toggle" onclick="toggleForms()">
+                Don’t have an account? <span>Sign up</span>
+            </div>
+        </form>
+
+        <!-- SIGN UP FORM -->
+        <form id="signupForm" method="POST" action="/signup" class="hidden">
+            <input name="username" type="text" placeholder="Username" required>
+            <input name="password" type="password" placeholder="Password" required>
+            <button type="submit">Create Account</button>
+            <div class="toggle" onclick="toggleForms()">
+                Already have an account? <span>Login</span>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        function toggleForms() {
+            document.getElementById("loginForm").classList.toggle("hidden");
+            document.getElementById("signupForm").classList.toggle("hidden");
+        }
+    </script>
+</body>
+
+</html>
