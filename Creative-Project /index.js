@@ -1,14 +1,18 @@
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-const users = require("./models/users");
 const mongoose = require("mongoose");
+const users = require("./models/users");
 
 const app = express();
+const PORT = 3000;
 
+console.log("***** SERVER STARTED *****");
+
+// MongoDB connection
 mongoose
   .connect(
-    "mongodb+srv://kiranpatel23_db_user:y5d2znDZPpXKVyrq@digitaldoppelganger.xtkrypc.mongodb.net/?appName=DigitalDoppelganger",
+    "mongodb+srv://kiranpatel23_db_user:Bailey2020@digitaldoppelganger.xtkrypc.mongodb.net/test?retryWrites=true&w=majority",
   )
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("MongoDB connection error:", err));
@@ -16,7 +20,6 @@ mongoose
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
   session({
@@ -26,38 +29,72 @@ app.use(
   }),
 );
 
-// MAIN ENTRY PAGE (Login / Signup UI)
+// Serve static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// ROOT
 app.get("/", (req, res) => {
+  console.log("ROOT ROUTE HIT");
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+// TEST ROUTE (to confirm backend works)
+app.get("/test", (req, res) => {
+  console.log("TEST ROUTE HIT");
+  res.send("Backend is working");
+});
+
+// SIGNUP
 app.post("/signup", async (req, res) => {
   try {
+    console.log("SIGNUP ROUTE HIT");
+    console.log("req.body:", req.body);
+
     const { username, password } = req.body;
 
-    const success = await users.addUser(username, password);
+    if (!username || !password) {
+      return res.send("Missing username or password");
+    }
+
+    const success = await users.addUser(username.trim(), password.trim());
+    console.log("Signup success:", success);
 
     if (!success) {
       return res.send("User already exists");
     }
 
-    // Auto login after signup
-    const user = await users.checkUser(username, password);
+    const user = await users.checkUser(username.trim(), password.trim());
+    console.log("User after signup:", user);
+
+    if (!user) {
+      return res.send("User created but login failed");
+    }
+
     req.session.userId = user._id;
     req.session.username = user.username;
 
+    console.log("Signup complete, redirecting...");
     res.redirect("/homepage");
   } catch (err) {
-    console.log("Signup error:", err);
-    res.status(500).send("Error creating user");
+    console.log("SIGNUP ERROR:", err);
+    res.send("Error creating user");
   }
 });
 
+// LOGIN
 app.post("/login", async (req, res) => {
   try {
+    console.log("LOGIN ROUTE HIT");
+    console.log("req.body:", req.body);
+
     const { username, password } = req.body;
 
-    const user = await users.checkUser(username, password);
+    if (!username || !password) {
+      return res.send("Missing username or password");
+    }
+
+    const user = await users.checkUser(username.trim(), password.trim());
+    console.log("User found:", user);
 
     if (!user) {
       return res.send("Invalid username or password");
@@ -66,15 +103,19 @@ app.post("/login", async (req, res) => {
     req.session.userId = user._id;
     req.session.username = user.username;
 
+    console.log("Login successful, redirecting...");
     res.redirect("/homepage");
   } catch (err) {
-    console.log("Login error:", err);
-    res.status(500).send("Error logging in");
+    console.log("LOGIN ERROR:", err);
+    res.send("Error logging in");
   }
 });
 
-// HOMEPAGE (PROTECTED)
+// PROTECTED HOMEPAGE
 app.get("/homepage", (req, res) => {
+  console.log("HOMEPAGE ROUTE HIT");
+  console.log("Session:", req.session);
+
   if (!req.session.userId) {
     return res.redirect("/");
   }
@@ -82,6 +123,14 @@ app.get("/homepage", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "homepage.html"));
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// LOGOUT (optional but useful)
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
+
+// START SERVER
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
