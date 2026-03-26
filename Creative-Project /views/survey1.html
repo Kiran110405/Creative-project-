@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="survey1.css">
+</head>
+
+<body>
+    <div class="survey-box">
+        <div class="question-number">Question 1 of 8</div>
+        <h1>Digital Behaviour Check</h1>
+
+        <p class="question-text">
+            How often do you post or share content online?
+        </p>
+
+        <form id="surveyForm">
+            <div class="options">
+                <label class="option-card">
+                    <input type="radio" name="posting" value="3" />
+                    <!--Value is score for that option and name is the category for that question group-->
+                    <div class="option-title">Very often</div>
+                    <div class="option-desc">
+                        I post or share content multiple times a day.
+                    </div>
+                </label>
+
+                <label class="option-card">
+                    <input type="radio" name="posting" value="2" />
+                    <div class="option-title">Fairly often</div>
+                    <div class="option-desc">
+                        I usually post once a day or a few times a week.
+                    </div>
+                </label>
+
+                <label class="option-card">
+                    <input type="radio" name="posting" value="1" />
+                    <div class="option-title">Occasionally</div>
+                    <div class="option-desc">
+                        I post now and then, but not very regularly.
+                    </div>
+                </label>
+
+                <label class="option-card">
+                    <input type="radio" name="posting" value="0" />
+                    <div class="option-title">Rarely</div>
+                    <div class="option-desc">
+                        I mostly observe and hardly ever post or share.
+                    </div>
+                </label>
+            </div>
+
+            <div class="button-row">
+                <div class="score-preview" id="scorePreview">No answer selected yet.</div>
+                <button type="submit">Save Answer</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        //getting the elements from the page 
+        const radioInputs = document.querySelectorAll('input[name="posting"]');
+        const optionCards = document.querySelectorAll(".option-card");
+        const scorePreview = document.getElementById("scorePreview");
+        const surveyForm = document.getElementById("surveyForm");
+
+        //runs when user pics an option
+        function updateSelection() {
+            optionCards.forEach((card) => card.classList.remove("selected"));//removes glowing effect from al other cards throuh CSS
+
+            const selectedInput = document.querySelector('input[name="posting"]:checked');
+
+            if (selectedInput) {//runs when user has picked an answer
+                const selectedCard = selectedInput.closest(".option-card");
+                selectedCard.classList.add("selected");//highlights the selected answer 
+                scorePreview.textContent = `Selected engagement score: ${selectedInput.value}`;//displays the score level as the bottom of the screen 
+            } else {
+                scorePreview.textContent = "No answer selected yet.";
+            }
+        }
+
+        //incase the user changes their answer 
+        radioInputs.forEach((input) => {
+            input.addEventListener("change", updateSelection);
+        });
+
+        surveyForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const selectedInput = document.querySelector('input[name="posting"]:checked');
+
+            if (!selectedInput) {
+                scorePreview.textContent = "Please select an answer before continuing.";
+                return;
+            }
+
+            const score = selectedInput.value;
+            const answerText = selectedInput
+                .closest(".option-card")
+                .querySelector(".option-title").textContent;
+
+            //data being stored in the browser 
+            localStorage.setItem("q1_posting_score", score);
+            localStorage.setItem("q1_posting_answer", answerText);
+
+            scorePreview.textContent = `Answer saved: ${answerText} (Score: ${score})`;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="survey2.css">
+    <title>Digital Doppelgänger Survey - Question 2</title>
+</head>
+
+<body>
+    <div class="survey-box">
+        <div class="question-number">Question 2 of 8</div>
+        <h1>Cookie Behaviour Check</h1>
+        <p class="question-text">
+            How often do you accept cookies without thinking?
+        </p>
+
+        <form id="cookieForm">
+            <div class="question-layout">
+                <div class="cookie-area">
+                    <div class="cookie">
+                        <div class="cookie-fill" id="cookieFill"></div>
+
+                        <div class="chips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="cookie-label" id="cookieLabel">Select one</div>
+                    </div>
+                </div>
+
+                <div class="answers-panel">
+                    <div class="answer-card" data-value="3" data-answer="Always">
+                        <div class="answer-title">Always</div>
+                        <div class="answer-desc">
+                            I usually accept cookies immediately without really checking.
+                        </div>
+                    </div>
+
+                    <div class="answer-card" data-value="2" data-answer="Sometimes">
+                        <div class="answer-title">Sometimes</div>
+                        <div class="answer-desc">
+                            I sometimes click accept quickly depending on the website.
+                        </div>
+                    </div>
+
+                    <div class="answer-card" data-value="1" data-answer="Rarely">
+                        <div class="answer-title">Rarely</div>
+                        <div class="answer-desc">
+                            I normally pause and think before accepting cookies.
+                        </div>
+                    </div>
+
+                    <div class="answer-card" data-value="0" data-answer="Never">
+                        <div class="answer-title">Never</div>
+                        <div class="answer-desc">
+                            I do not accept cookies automatically and try to manage them carefully.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <div class="score-preview" id="scorePreview">No answer selected yet.</div>
+                <button type="submit">Save Answer</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        //getting the different elements from the page
+        const answerCards = document.querySelectorAll(".answer-card");//answers 
+        const cookieFill = document.getElementById("cookieFill");//filling part of the cookie 
+        const cookieLabel = document.getElementById("cookieLabel");//text inside cookie
+        const scorePreview = document.getElementById("scorePreview");//score at the bottom
+        const cookieForm = document.getElementById("cookieForm");
+
+        let selectedValue = null;
+        let selectedAnswer = null;
+
+        //runs when user selects an answer 
+        function updateSelection(value, answer) {
+            //the score of the answer and the answer itself 
+            selectedValue = Number(value);
+            selectedAnswer = answer;
+
+            answerCards.forEach((card) => {
+                card.classList.remove("active");
+            });
+
+            const selectedCard = document.querySelector(`.answer-card[data-value="${value}"]`);
+            selectedCard.classList.add("active");
+
+            //controls how full the cookie is 
+            let fillPercent = 0;
+
+            if (selectedValue === 3) {
+                fillPercent = 100;
+            } else if (selectedValue === 2) {
+                fillPercent = 50;
+            } else if (selectedValue === 1) {
+                fillPercent = 25;
+            } else if (selectedValue === 0) {
+                fillPercent = 0;
+            }
+
+            cookieFill.style.height = fillPercent + "%";//changes height of how full the cookie is 
+            cookieLabel.textContent = answer;
+            scorePreview.textContent = `Selected answer: ${answer}`;
+        }
+
+        //loops through array of options and waits for answer to be selected
+        answerCards.forEach((card) => {
+            card.addEventListener("click", () => {
+                updateSelection(card.dataset.value, card.dataset.answer);
+            });
+        });
+
+        cookieForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (selectedValue === null) {
+                scorePreview.textContent = "Please select an answer before continuing.";
+                return;
+            }
+
+            //saves data to local browser and stored with other abnswers 
+            localStorage.setItem("q2_cookie_score", selectedValue);
+            localStorage.setItem("q2_cookie_answer", selectedAnswer);
+
+            scorePreview.textContent = `Answer saved: ${selectedAnswer} (Score: ${selectedValue})`;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0e0f13;
+    color: #e5e7eb;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.14), transparent 70%);
+    filter: blur(90px);
+    z-index: 0;
+}
+
+.survey-box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 760px;
+    background: rgba(26, 31, 43, 0.92);
+    border: 1px solid rgba(0, 245, 255, 0.14);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.08);
+}
+
+.question-number {
+    color: #00f5ff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: 2rem;
+    color: white;
+}
+
+.question-text {
+    margin: 0 0 28px;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.options {
+    display: grid;
+    gap: 16px;
+}
+
+.option-card {
+    display: block;
+    background: #11151f;
+    border: 1px solid #2a2f3c;
+    border-radius: 18px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.option-card:hover {
+    border-color: #00f5ff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(0, 245, 255, 0.14);
+}
+
+.option-card input[type="radio"] {
+    accent-color: #00f5ff;
+    transform: scale(1.1);
+    margin-bottom: 10px;
+}
+
+.option-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 6px;
+}
+
+.option-desc {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.option-card.selected {
+    border-color: #00f5ff;
+    background: rgba(0, 245, 255, 0.08);
+    box-shadow: 0 0 16px rgba(0, 245, 255, 0.12);
+}
+
+.button-row {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.score-preview {
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    background: #00f5ff;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+button:hover {
+    background: #00d4dc;
+    transform: scale(1.03);
+}
