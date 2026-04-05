@@ -34,14 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ROOT
 app.get("/", (req, res) => {
-  console.log("ROOT ROUTE HIT");
   res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// TEST ROUTE (to confirm backend works)
-app.get("/test", (req, res) => {
-  console.log("TEST ROUTE HIT");
-  res.send("Backend is working");
 });
 
 // SIGNUP
@@ -53,7 +46,7 @@ app.post("/signup", async (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
-      return res.send("Missing username or password");
+      return res.send("Username and Password not found");
     }
 
     const success = await users.addUser(username.trim(), password.trim());
@@ -111,16 +104,18 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// PROTECTED HOMEPAGE
+//routes
+
 app.get("/homepage", (req, res) => {
-  console.log("HOMEPAGE ROUTE HIT");
-  console.log("Session:", req.session);
-
-  if (!req.session.userId) {
-    return res.redirect("/");
-  }
-
   res.sendFile(path.join(__dirname, "views", "homepage.html"));
+});
+
+app.get("/survey1", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "survey1.html"));
+});
+
+app.get("/survey2", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "survey2.html"));
 });
 
 // LOGOUT (optional but useful)

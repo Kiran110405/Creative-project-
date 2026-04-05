@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Doppelgänger Survey - Question 3</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #0E0F13;
+            color: #E5E7EB;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.12), transparent 70%);
+            filter: blur(90px);
+            z-index: 0;
+        }
+
+        .survey-box {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 850px;
+            background: rgba(26, 31, 43, 0.92);
+            border: 1px solid rgba(0, 245, 255, 0.14);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.08);
+        }
+
+        .question-number {
+            color: #00F5FF;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .question-text {
+            margin: 0 0 30px;
+            color: #CBD5E1;
+            line-height: 1.7;
+            font-size: 1rem;
+            max-width: 700px;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .answer-card {
+            background: #11151F;
+            border: 1px solid #2A2F3C;
+            border-radius: 18px;
+            padding: 22px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-height: 120px;
+        }
+
+        .answer-card:hover {
+            border-color: #00F5FF;
+            transform: translateY(-2px);
+            box-shadow: 0 0 14px rgba(0, 245, 255, 0.14);
+        }
+
+        .answer-card.active {
+            border-color: #00F5FF;
+            background: rgba(0, 245, 255, 0.08);
+            box-shadow: 0 0 16px rgba(0, 245, 255, 0.1);
+        }
+
+        .answer-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .answer-content {
+            flex: 1;
+        }
+
+        .answer-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .answer-desc {
+            font-size: 0.95rem;
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        .button-row {
+            margin-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .score-preview {
+            color: #9CA3AF;
+            font-size: 0.95rem;
+        }
+
+        button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 10px;
+            background: #00F5FF;
+            color: black;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        button:hover {
+            background: #00D4DC;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="survey-box">
+        <div class="progress-area">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+            </div>
+        </div>
+        <h1>Interaction Behaviour Check</h1>
+        <p class="question-text">
+            What do you usually do most when you go on social media?
+        </p>
+
+        <form id="activityForm">
+            <div class="answer-grid">
+                <div class="answer-card" data-value="3" data-answer="Like posts">
+                    <div class="answer-icon">❤️</div>
+                    <div class="answer-content">
+                        <div class="answer-title">Like posts</div>
+                        <div class="answer-desc">
+                            You usually react quickly to content by liking what you see.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answer-card" data-value="2" data-answer="Comment">
+                    <div class="answer-icon">💬</div>
+                    <div class="answer-content">
+                        <div class="answer-title">Comment</div>
+                        <div class="answer-desc">
+                            You like to reply, share opinions, and join conversations.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answer-card" data-value="1" data-answer="Message">
+                    <div class="answer-icon">✉️</div>
+                    <div class="answer-content">
+                        <div class="answer-title">Message</div>
+                        <div class="answer-desc">
+                            You mostly interact privately by messaging people directly.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answer-card" data-value="0" data-answer="Scroll">
+                    <div class="answer-icon">👀</div>
+                    <div class="answer-content">
+                        <div class="answer-title">Scroll</div>
+                        <div class="answer-desc">
+                            You mostly browse and observe content without interacting much.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <div class="score-preview" id="scorePreview">No answer selected yet.</div>
+                <button type="submit">Save Answer</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        //getting elements 
+        const answerCards = document.querySelectorAll(".answer-card");
+        const activityForm = document.getElementById("activityForm");
+        const scorePreview = document.getElementById("scorePreview");
+
+        let selectedValue = null;
+        let selectedAnswer = null;
+
+        //runs when user selects an answer 
+        function updateSelection(value, answer) {
+            selectedValue = Number(value);
+            selectedAnswer = answer;
+
+            //removes highlight from all cards so only one can be highlighted at a time
+            answerCards.forEach((card) => {
+                card.classList.remove("active");
+            });
+
+            const selectedCard = document.querySelector(`.answer-card[data-value="${value}"]`);
+            selectedCard.classList.add("active");//makes the answer selected the highlighted one, gives it the class "active"
+
+            scorePreview.textContent = `Selected answer: ${answer}`;//user sees what they have picked 
+        }
+
+        //when a card is clicked, it send the answer and the value of the answer itself
+        answerCards.forEach((card) => {
+            card.addEventListener("click", () => {
+                updateSelection(card.dataset.value, card.dataset.answer);
+            });
+        });
+
+        activityForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (selectedValue === null) {
+                scorePreview.textContent = "Please select an answer before continuing.";
+                return;
+            }
+
+            localStorage.setItem("q3_activity_score", selectedValue);
+            localStorage.setItem("q3_activity_answer", selectedAnswer);
+
+            scorePreview.textContent = `Answer saved: ${selectedAnswer} (Score: ${selectedValue})`;
+        });
+    </script>
+</body>
+
+</html>
