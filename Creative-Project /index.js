@@ -107,6 +107,13 @@ app.post("/login", async (req, res) => {
 //routes
 
 app.get("/homepage", (req, res) => {
+  console.log("HOMEPAGE ROUTE HIT");
+  console.log("Session:", req.session);
+
+  if (!req.session.userId) {
+    return res.redirect("/");
+  }
+
   res.sendFile(path.join(__dirname, "views", "homepage.html"));
 });
 
@@ -116,6 +123,10 @@ app.get("/survey1", (req, res) => {
 
 app.get("/survey2", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "survey2.html"));
+});
+
+app.get("/survey3", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "survey3.html"));
 });
 
 // LOGOUT (optional but useful)
