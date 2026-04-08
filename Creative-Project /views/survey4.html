@@ -118,6 +118,8 @@
                 <input type="range" min="0" max="3" value="1" id="slider">
                 <div class="labels">
                     <span>Rarely</span>
+                    <span>Sometimes</span>
+                    <span>Quickly</span>
                     <span>Instantly</span>
                 </div>
             </div>
@@ -132,8 +134,27 @@
 
     <script>
         const slider = document.getElementById("slider");
+        const gif = document.getElementById("gif");
         const feedback = document.getElementById("feedback");
         const form = document.getElementById("form");
+
+        //so the gif changes when the slider moves
+        slider.addEventListener("input", () => {
+            const value = slider.value;
+
+            if (value == 0) {
+                gif.src = "/images/notification-ignore.gif";
+            }
+            else if (value == 1) {
+                gif.src = "/images/glitch-fast.gif";
+            }
+            else if (value == 2) {
+                gif.src = "/images/phone-scrolling.gif";
+            }
+            else if (value == 3) {
+                gif.src = "/images/text-scrolling.gif";
+            }
+        })
 
         let selectedValue = slider.value;
 
