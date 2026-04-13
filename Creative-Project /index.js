@@ -133,6 +133,10 @@ app.get("/survey4", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "survey4.html"));
 });
 
+app.get("/survey5", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "survey5.html"));
+});
+
 // LOGOUT (optional but useful)
 app.get("/logout", (req, res) => {
   req.session.destroy(() => {

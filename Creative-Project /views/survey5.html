@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey5.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Awareness Check</h1>
+        <p class="question">How aware are you of the digital footprint that you leave behind online?</p>
+
+        <form id="form">
+            <div class="images">
+                <img id="digital-footprint-image" src="/images/digital-footprint-image.jpg" alt="Awareness image">
+            </div>
+            <div class="slider-wrap">
+                <input type="range" id="awarenessSlider" min="0" max="3" value="0">
+                <div class="labels">
+                    <span>Not aware</span>
+                    <span>Somewhat aware</span>
+                    <span>Mostly aware</span>
+                    <span>Very aware</span>
+                </div>
+            </div>
+
+            <div class="feedback" id="feedback">Not aware at all</div>
+
+            <button type="submit">Save Answer</button>
+        </form>
+    </div>
+
+    <script>
+        const slider = document.getElementById("awarenessSlider");
+        const image = document.getElementById("digital-footprint-image");
+        const feedback = document.getElementById("feedback");
+        const form = document.getElementById("form")
+
+        //images blurryness will update to these based on input given  and the answer text below
+        function updateAwareness(value) {
+            const blurLevels = ["12px", "8px", "4px", "0px"];
+            const labels = [
+                "Not ware at all",
+                "Somewhat aware",
+                "Mostly aware",
+                "Very aware",
+            ];
+
+            //changes images blurryness based on feedback given
+            image.style.filter = `blur(${blurLevels[value]})`;
+            feedback.textContent = labels[value];
+        }
+
+        //this gets the input from the slider and passes it to the updateAwareness function.
+        slider.addEventListener("input", () => {
+            updateAwareness(slider.value);
+        });
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const score = Number(slider.value);
+            const labels = [
+                "Not ware at all",
+                "Somewhat aware",
+                "Mostly aware",
+                "Very aware",
+            ];
+
+            localStorage.setItem("q5_awareness_score", score);
+            localStorage.setItem("q5_awareness_answer")
+
+            feedback.textContent = `Answer saved: ${labels[score]} (Score: ${score})`;
+        });
+
+        updateAwareness(slider.value);
+
+    </script>
+</body>
+
+</html>
