@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resultspage.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="resultBox" class="result-box">
+            <h1 id="resultTitle">Loading...</h1>
+        </div>
+
+        <div id="infoBox" class="information-box"></div>
+
+        <div id="hazardBox" class="hazard-box">
+            ⚠️ Continued high levels of digital engagement may lead to increased dependency on online platforms,
+            where constant interaction becomes a default behaviour rather than a conscious choice. Over time, this
+            can contribute to a reduced attention span, making it harder to focus on tasks without digital interruption.
+
+            Frequent exposure to notifications, content streams, and rapid interactions can also blur the boundary
+            between online and offline identity, where your sense of self becomes increasingly shaped by digital
+            feedback, algorithms, and external validation.
+
+            This pattern may result in a decreased awareness of how your data is being collected, interpreted,
+            and used, while reinforcing habits that prioritise immediate engagement over intentional use. As a result,
+            your digital presence becomes more reactive than reflective, driven by stimuli rather than conscious
+            decisions.
+        </div>
+
+    </div>
+    <script>
+        //gets the scores of the user 
+        const q1 = Number(localStorage.getItem("q1_posting_score")) || 0;
+        const q2 = Number(localStorage.getItem("q2_cookie_score")) || 0;
+        const q3 = Number(localStorage.getItem("q3_activity_score")) || 0;
+        const q4 = Number(localStorage.getItem("q4_notification_score")) || 0;
+        const q5 = Number(localStorage.getItem("q5_awareness_score")) || 0;
+
+        //adds all the scores from local storage together 
+        const totalScore = q1 + q2 + q3 + q4 + q5;
+
+        //my elements 
+        const resultTitle = document.getElementById("resultTitle"); const resultBox = document.getElementById("resultBox");
+        const infoBox = document.getElementById("infoBox");
+        const hazardBox = document.getElementById("hazardBox");
+
+        let type = "";
+        let color = "";
+        let message = "";
+        let showHazard = false;
+
+        if (totalScore <= 5) {
+            type = "ONLINE PRESENCE IS HEALTHY";
+            color = "#00FF9F";
+
+            message = `
+    <p>You engage with digital platforms in a controlled and balanced way.</p>
+    <p>Your online presence is minimal, and your behaviour suggests a low dependency on constant interaction.</p>
+    <p>This often results in better focus, reduced digital fatigue, and a more intentional use of technology.</p>
+  `;
+        }
+
+        else if (totalScore <= 10) {
+            type = "BALANCED DIGITAL USER";
+            color = "#FFA500";
+
+            message = `
+    <p>Your online behaviour sits in the middle ground between active and passive use.</p>
+    <p>You engage regularly, but not excessively, maintaining a balance between interaction and observation.</p>
+    <p>This reflects a typical modern digital lifestyle.</p>
+  `;
+        }
+
+        else {
+            type = "HIGH DIGITAL DEPENDENCY";
+            color = "#FF3B3B";
+            showHazard = true;
+
+            message = `
+    <p>Your behaviour indicates a high level of engagement with digital platforms.</p>
+    <p>You are highly reactive to notifications, frequently interact with content, and maintain a strong online presence.</p>
+    <p>This pattern suggests a deep integration of digital activity into your daily routine.</p>
+  `;
+        }
+
+        //designs the UI based on the score 
+        resultTitle.textContent = type;
+        resultBox.style.color = color;
+        resultBox.style.borderColor = color;
+
+        infoBox.innerHTML = message;
+
+        if (showHazard) {
+            hazardBox.style.display = "block";
+        }
+
+
+    </script>
+</body>
+
+</html>

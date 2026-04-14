@@ -114,7 +114,8 @@
             localStorage.setItem("q3_activity_score", selectedValue);
             localStorage.setItem("q3_activity_answer", selectedAnswer);
 
-            scorePreview.textContent = `Answer saved: ${selectedAnswer} (Score: ${selectedValue})`;
+            window.location.href = "/survey4";
+
         });
     </script>
 </body>

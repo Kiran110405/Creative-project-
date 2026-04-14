@@ -141,7 +141,8 @@
             localStorage.setItem("q2_cookie_score", selectedValue);
             localStorage.setItem("q2_cookie_answer", selectedAnswer);
 
-            scorePreview.textContent = `Answer saved: ${selectedAnswer} (Score: ${selectedValue})`;
+            window.location.href = "/survey3";
+
         });
     </script>
 </body>

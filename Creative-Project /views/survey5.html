@@ -29,7 +29,7 @@
 
             <div class="feedback" id="feedback">Not aware at all</div>
 
-            <button type="submit">Save Answer</button>
+            <button type="submit">View Your Results!</button>
         </form>
     </div>
 
@@ -43,7 +43,7 @@
         function updateAwareness(value) {
             const blurLevels = ["12px", "8px", "4px", "0px"];
             const labels = [
-                "Not ware at all",
+                "Not aware at all",
                 "Somewhat aware",
                 "Mostly aware",
                 "Very aware",
@@ -71,9 +71,11 @@
             ];
 
             localStorage.setItem("q5_awareness_score", score);
-            localStorage.setItem("q5_awareness_answer")
+            localStorage.setItem("q5_awareness_answer", labels[score])
 
-            feedback.textContent = `Answer saved: ${labels[score]} (Score: ${score})`;
+            window.location.href = "/resultspage";
+
+
         });
 
         updateAwareness(slider.value);
