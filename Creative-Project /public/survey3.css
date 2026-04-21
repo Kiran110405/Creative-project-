@@ -16,17 +16,6 @@ body {
     overflow: hidden;
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    width: 650px;
-    height: 650px;
-    background: radial-gradient(circle, rgba(0, 245, 255, 0.12), transparent 70%);
-    filter: blur(90px);
-    z-index: 0;
-}
-
-
 .grid-overlay {
     position: fixed;
     inset: 0;
@@ -54,6 +43,28 @@ body::before {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 12px;
+}
+
+.progress-area {
+    margin-bottom: 24px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #11151F;
+    border: 1px solid #2A2F3C;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #00F5FF, #00C8D2);
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.25);
+    transition: width 0.4s ease;
 }
 
 h1 {

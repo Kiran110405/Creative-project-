@@ -4,101 +4,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Doppelgänger Report</title>
     <link rel="stylesheet" href="resultspage.css">
-    <title>Document</title>
 </head>
 
 <body>
-    <div class="container">
-        <div id="resultBox" class="result-box">
-            <h1 id="resultTitle">Loading...</h1>
+    <div class="report-container">
+
+        <div class="report-header">
+            <p class="report-tag">DIGITAL DOPPELGÄNGER REPORT</p>
+            <h1>Your Online Behaviour Report</h1>
+            <p class="report-subtitle">
+                This report reflects how your survey responses suggest you behave online, how engaged you are with
+                digital platforms, and how aware you are of your online presence.
+            </p>
         </div>
 
-        <div id="infoBox" class="information-box"></div>
+        <div id="resultBox" class="result-box">
+            <h2 id="resultTitle">Loading...</h2>
+            <p id="resultSummary" class="result-summary"></p>
+        </div>
+
+        <div class="score-panel">
+            <div class="score-card">
+                <p class="small-label">TOTAL SCORE</p>
+                <h3 id="totalScoreNumber">0 / 15</h3>
+            </div>
+
+            <div class="score-card">
+                <p class="small-label">DIGITAL TYPE</p>
+                <h3 id="digitalTypeText">Analysing...</h3>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h3>Profile Overview</h3>
+            <div id="infoBox" class="information-box"></div>
+        </div>
+
+        <div class="section-box">
+            <h3>Behaviour Breakdown</h3>
+            <div class="breakdown-grid">
+
+                <div class="breakdown-card">
+                    <p class="small-label">Q1 Posting Behaviour</p>
+                    <h4 id="q1Answer">-</h4>
+                    <p id="q1Explain">-</p>
+                </div>
+
+                <div class="breakdown-card">
+                    <p class="small-label">Q2 Cookie Behaviour</p>
+                    <h4 id="q2Answer">-</h4>
+                    <p id="q2Explain">-</p>
+                </div>
+
+                <div class="breakdown-card">
+                    <p class="small-label">Q3 Social Interaction</p>
+                    <h4 id="q3Answer">-</h4>
+                    <p id="q3Explain">-</p>
+                </div>
+
+                <div class="breakdown-card">
+                    <p class="small-label">Q4 Notification Behaviour</p>
+                    <h4 id="q4Answer">-</h4>
+                    <p id="q4Explain">-</p>
+                </div>
+
+                <div class="breakdown-card">
+                    <p class="small-label">Q5 Awareness Level</p>
+                    <h4 id="q5Answer">-</h4>
+                    <p id="q5Explain">-</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h3>Observed Characteristics</h3>
+            <div id="characteristicsBox" class="characteristics-box"></div>
+        </div>
 
         <div id="hazardBox" class="hazard-box">
-            ⚠️ Continued high levels of digital engagement may lead to increased dependency on online platforms,
-            where constant interaction becomes a default behaviour rather than a conscious choice. Over time, this
-            can contribute to a reduced attention span, making it harder to focus on tasks without digital interruption.
-
-            Frequent exposure to notifications, content streams, and rapid interactions can also blur the boundary
-            between online and offline identity, where your sense of self becomes increasingly shaped by digital
-            feedback, algorithms, and external validation.
-
-            This pattern may result in a decreased awareness of how your data is being collected, interpreted,
-            and used, while reinforcing habits that prioritise immediate engagement over intentional use. As a result,
-            your digital presence becomes more reactive than reflective, driven by stimuli rather than conscious
-            decisions.
+            <h3>⚠ Hazard Warning</h3>
+            <p>
+                Continued high levels of digital engagement may lead to increased dependency on online platforms,
+                where constant interaction becomes a default behaviour rather than a conscious choice.
+            </p>
+            <p>
+                Over time, this can reduce attention span, make it harder to focus without interruption, and blur the
+                boundary between online and offline identity.
+            </p>
+            <p>
+                Frequent exposure to notifications, constant content streams, and fast-paced interaction can make your
+                online presence more reactive than reflective, meaning your behaviour may be shaped more by stimulation,
+                algorithms, and validation than by deliberate choice.
+            </p>
         </div>
 
     </div>
+
     <script>
-        //gets the scores of the user 
+        // scores
         const q1 = Number(localStorage.getItem("q1_posting_score")) || 0;
         const q2 = Number(localStorage.getItem("q2_cookie_score")) || 0;
         const q3 = Number(localStorage.getItem("q3_activity_score")) || 0;
         const q4 = Number(localStorage.getItem("q4_notification_score")) || 0;
         const q5 = Number(localStorage.getItem("q5_awareness_score")) || 0;
 
-        //adds all the scores from local storage together 
         const totalScore = q1 + q2 + q3 + q4 + q5;
 
-        //my elements 
-        const resultTitle = document.getElementById("resultTitle"); const resultBox = document.getElementById("resultBox");
+        // saved answers
+        const q1Saved = localStorage.getItem("q1_posting_answer") || "No answer recorded";
+        const q2Saved = localStorage.getItem("q2_cookie_answer") || "No answer recorded";
+        const q3Saved = localStorage.getItem("q3_activity_answer") || "No answer recorded";
+        const q4Saved = localStorage.getItem("q4_notification_answer") || "No answer recorded";
+        const q5Saved = localStorage.getItem("q5_awareness_answer") || "No answer recorded";
+
+        // elements
+        const resultTitle = document.getElementById("resultTitle");
+        const resultBox = document.getElementById("resultBox");
+        const resultSummary = document.getElementById("resultSummary");
+        const totalScoreNumber = document.getElementById("totalScoreNumber");
+        const digitalTypeText = document.getElementById("digitalTypeText");
         const infoBox = document.getElementById("infoBox");
+        const characteristicsBox = document.getElementById("characteristicsBox");
         const hazardBox = document.getElementById("hazardBox");
 
+        // breakdown elements
+        document.getElementById("q1Answer").textContent = q1Saved;
+        document.getElementById("q2Answer").textContent = q2Saved;
+        document.getElementById("q3Answer").textContent = q3Saved;
+        document.getElementById("q4Answer").textContent = q4Saved;
+        document.getElementById("q5Answer").textContent = q5Saved;
+
+        // explanations for each answer
+        document.getElementById("q1Explain").textContent =
+            "This reflects how actively you present yourself online through posting and sharing.";
+
+        document.getElementById("q2Explain").textContent =
+            "This shows how automatically or carefully you respond to privacy and cookie prompts.";
+
+        document.getElementById("q3Explain").textContent =
+            "This suggests whether your online interaction style is active, reactive, private, or observational.";
+
+        document.getElementById("q4Explain").textContent =
+            "This indicates how reactive you are to digital prompts and how quickly online platforms gain your attention.";
+
+        document.getElementById("q5Explain").textContent =
+            "This reflects your awareness of the data trail you leave behind through everyday online behaviour.";
+
+        // result logic
         let type = "";
         let color = "";
-        let message = "";
+        let summary = "";
+        let overview = "";
+        let characteristics = "";
         let showHazard = false;
 
         if (totalScore <= 5) {
             type = "ONLINE PRESENCE IS HEALTHY";
             color = "#00FF9F";
 
-            message = `
-    <p>You engage with digital platforms in a controlled and balanced way.</p>
-    <p>Your online presence is minimal, and your behaviour suggests a low dependency on constant interaction.</p>
-    <p>This often results in better focus, reduced digital fatigue, and a more intentional use of technology.</p>
-  `;
-        }
+            summary = "Your score suggests a balanced and controlled relationship with digital platforms.";
+            overview = `
+                <p>Your overall behaviour suggests that you engage with online spaces in a measured and intentional way.</p>
+                <p>You do not appear to rely heavily on constant interaction, fast responses, or continuous digital stimulation.</p>
+                <p>This profile often reflects stronger control over attention, a lower dependency on online validation, and a healthier separation between online activity and everyday life.</p>
+            `;
 
-        else if (totalScore <= 10) {
+            characteristics = `
+                <ul>
+                    <li>You are likely selective about when and how you engage online.</li>
+                    <li>Your online behaviour appears more deliberate than reactive.</li>
+                    <li>You may experience less digital fatigue because your interaction levels are lower and more controlled.</li>
+                    <li>This type of behaviour can support better focus, clearer boundaries, and a more stable relationship with technology.</li>
+                </ul>
+            `;
+        } else if (totalScore <= 10) {
             type = "BALANCED DIGITAL USER";
             color = "#FFA500";
 
-            message = `
-    <p>Your online behaviour sits in the middle ground between active and passive use.</p>
-    <p>You engage regularly, but not excessively, maintaining a balance between interaction and observation.</p>
-    <p>This reflects a typical modern digital lifestyle.</p>
-  `;
-        }
+            summary = "Your score places you in the middle range, showing a typical level of online engagement.";
+            overview = `
+                <p>Your results suggest a fairly normal digital lifestyle, with regular engagement across different online behaviours.</p>
+                <p>You appear comfortable using digital platforms as part of everyday life, but not to an extreme level.</p>
+                <p>This profile reflects a mixed pattern of activity, awareness, responsiveness, and observation that is common among everyday internet users.</p>
+            `;
 
-        else {
+            characteristics = `
+                <ul>
+                    <li>You are digitally active, but not overwhelmingly dependent.</li>
+                    <li>Your behaviour suggests a balance between participation and observation.</li>
+                    <li>You may move between being intentional online and acting automatically depending on the situation.</li>
+                    <li>This reflects a standard modern relationship with digital platforms, where online interaction is frequent but still relatively manageable.</li>
+                </ul>
+            `;
+        } else {
             type = "HIGH DIGITAL DEPENDENCY";
             color = "#FF3B3B";
             showHazard = true;
 
-            message = `
-    <p>Your behaviour indicates a high level of engagement with digital platforms.</p>
-    <p>You are highly reactive to notifications, frequently interact with content, and maintain a strong online presence.</p>
-    <p>This pattern suggests a deep integration of digital activity into your daily routine.</p>
-  `;
+            summary = "Your score suggests a highly reactive and deeply embedded online presence.";
+            overview = `
+                <p>Your results indicate a strong level of digital engagement across multiple behaviours.</p>
+                <p>You appear highly connected to online platforms, quick to respond to digital prompts, and likely to engage with content regularly.</p>
+                <p>This profile reflects a more intense online presence, where digital interaction plays a major role in daily routine, attention, and self-presentation.</p>
+            `;
+
+            characteristics = `
+                <ul>
+                    <li>You may be highly responsive to notifications, content updates, and social feedback.</li>
+                    <li>Your online behaviour appears more reactive and immediate than slow or deliberate.</li>
+                    <li>You may be more influenced by online systems, visibility, and external interaction than lower-scoring users.</li>
+                    <li>This type of behaviour can suggest a closer attachment to digital environments and a reduced distance between online activity and personal identity.</li>
+                </ul>
+            `;
         }
 
-        //designs the UI based on the score 
+        // apply result
         resultTitle.textContent = type;
+        resultSummary.textContent = summary;
         resultBox.style.color = color;
         resultBox.style.borderColor = color;
-
-        infoBox.innerHTML = message;
+        totalScoreNumber.textContent = `${totalScore} / 15`;
+        digitalTypeText.textContent = type;
+        digitalTypeText.style.color = color;
+        infoBox.innerHTML = overview;
+        characteristicsBox.innerHTML = characteristics;
 
         if (showHazard) {
             hazardBox.style.display = "block";
+        } else {
+            hazardBox.style.display = "none";
         }
-
-
     </script>
 </body>
 

@@ -9,8 +9,13 @@
 </head>
 
 <body>
-
+    <div class="grid-overlay"></div>
     <div class="box">
+        <div class="progress-area">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%;"></div>
+            </div>
+        </div>
         <h1>Notification Behaviour</h1>
         <p class="question">How quickly do you check notifications?</p>
 
@@ -49,16 +54,16 @@
             const value = slider.value;
 
             if (value == 0) {
-                gif.src = "/images/notification-ignore.gif";
+                gif.src = "images/notification-ignore.gif";
             }
             else if (value == 1) {
-                gif.src = "/images/glitch-fast.gif";
+                gif.src = "images/glitch-fast.gif";
             }
             else if (value == 2) {
-                gif.src = "/images/phone-scrolling.gif";
+                gif.src = "images/phone-scrolling.gif";
             }
             else if (value == 3) {
-                gif.src = "/images/text-scrolling.gif";
+                gif.src = "images/text-scrolling.gif";
             }
         })
 

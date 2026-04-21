@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scanning Profile...</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #0E0F13;
+            color: #E5E7EB;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.12), transparent 70%);
+            filter: blur(100px);
+            z-index: 0;
+        }
+
+        .scan-box {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 700px;
+            background: rgba(26, 31, 43, 0.92);
+            border: 2px solid #00F5FF;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.18);
+        }
+
+        .scan-box h1 {
+            margin: 0 0 16px;
+            font-size: 2.5rem;
+            color: #00F5FF;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .scan-box p {
+            margin: 0 0 30px;
+            color: #CBD5E1;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .scanner {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            border-radius: 18px;
+            background: #11151F;
+            border: 1px solid #2A2F3C;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 35px 35px;
+        }
+
+        .scan-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #00F5FF, transparent);
+            box-shadow: 0 0 16px rgba(0, 245, 255, 0.7);
+            animation: scanMove 2s infinite ease-in-out;
+        }
+
+        @keyframes scanMove {
+            0% {
+                top: 0%;
+            }
+
+            50% {
+                top: 95%;
+            }
+
+            100% {
+                top: 0%;
+            }
+        }
+
+        .scan-data {
+            position: absolute;
+            inset: 0;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: #9CA3AF;
+            text-align: left;
+        }
+
+        .scan-data strong {
+            color: #E5E7EB;
+        }
+
+        .status-text {
+            color: #00F5FF;
+            font-weight: 600;
+            font-size: 1rem;
+            min-height: 24px;
+        }
+
+        .dot-loader {
+            display: inline-block;
+        }
+
+        .dot-loader::after {
+            content: "";
+            animation: dots 1.2s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0% {
+                content: "";
+            }
+
+            25% {
+                content: ".";
+            }
+
+            50% {
+                content: "..";
+            }
+
+            75% {
+                content: "...";
+            }
+
+            100% {
+                content: "";
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scan-box">
+        <h1>Scanning</h1>
+        <p>
+            Analysing behaviour patterns, digital habits, and online response activity to generate your profile.
+        </p>
+
+        <div class="scanner">
+            <div class="grid"></div>
+            <div class="scan-line"></div>
+
+            <div class="scan-data">
+                <div><strong>Profile Status:</strong> Behaviour data detected</div>
+                <div><strong>Analysis Layer:</strong> Engagement / awareness / reactivity</div>
+                <div><strong>System Output:</strong> Building digital profile</div>
+            </div>
+        </div>
+
+        <div class="status-text" id="statusText">
+            Reading behavioural signals<span class="dot-loader"></span>
+        </div>
+    </div>
+
+    <script>
+        const statusText = document.getElementById("statusText");
+
+        const messages = [
+            "Reading behavioural signals",
+            "Mapping online activity",
+            "Interpreting digital habits",
+            "Generating final profile"
+        ];
+
+        let index = 0;
+
+        const interval = setInterval(() => {
+            index++;
+            if (index < messages.length) {
+                statusText.innerHTML = messages[index] + '<span class="dot-loader"></span>';
+            }
+        }, 900);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            window.location.href = "/resultspage";
+        }, 3600);
+    </script>
+</body>
+
+</html>

@@ -1,92 +1,130 @@
-  body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #0E0F13;
-      color: #E5E7EB;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-  }
+ * {
+     box-sizing: border-box;
+ }
 
-  .box {
-      width: 90%;
-      max-width: 600px;
-      background: #1A1F2B;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-  }
+ body {
+     margin: 0;
+     font-family: "Segoe UI", sans-serif;
+     background: #0E0F13;
+     color: #E5E7EB;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+ }
 
-  h1 {
-      margin-bottom: 10px;
-  }
+ .grid-overlay {
+     position: fixed;
+     inset: 0;
+     background-image:
+         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+     background-size: 40px 40px;
+ }
 
-  .question {
-      color: #9CA3AF;
-      margin-bottom: 30px;
-  }
+ .box {
+     position: relative;
+     z-index: 1;
+     width: 100%;
+     max-width: 850px;
+     background: rgba(26, 31, 43, 0.92);
+     border: 1px solid rgba(0, 245, 255, 0.14);
+     border-radius: 24px;
+     padding: 36px;
+     box-shadow: 0 0 30px rgba(0, 245, 255, 0.08);
+ }
 
-  /* slider styling */
-  .slider-container {
-      margin: 30px 0;
-  }
+ .progress-area {
+     margin-bottom: 24px;
+ }
 
-  input[type="range"] {
-      width: 100%;
-      appearance: none;
-      height: 8px;
-      background: #2A2F3C;
-      border-radius: 10px;
-      outline: none;
-  }
+ .progress-bar {
+     width: 100%;
+     height: 12px;
+     background: #11151F;
+     border: 1px solid #2A2F3C;
+     border-radius: 999px;
+     overflow: hidden;
+     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+ }
 
-  /* slider thumb */
-  input[type="range"]::-webkit-slider-thumb {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      background: #00F5FF;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
-  }
+ .progress-fill {
+     height: 100%;
+     border-radius: 999px;
+     background: linear-gradient(90deg, #00F5FF, #00C8D2);
+     box-shadow: 0 0 12px rgba(0, 245, 255, 0.25);
+     transition: width 0.4s ease;
+ }
 
-  /* labels */
-  .labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      color: #9CA3AF;
-      margin-top: 8px;
-  }
+ h1 {
+     margin-bottom: 10px;
+ }
 
-  .feedback {
-      margin-top: 20px;
-      font-size: 1rem;
-      color: #00F5FF;
-  }
+ .question {
+     color: #9CA3AF;
+     margin-bottom: 30px;
+ }
 
-  button {
-      margin-top: 25px;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      border-radius: 10px;
-      background: #00F5FF;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-  }
+ /* slider styling */
+ .slider-container {
+     margin: 30px 0;
+ }
 
-  .gif-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-  }
+ input[type="range"] {
+     width: 100%;
+     appearance: none;
+     height: 8px;
+     background: #2A2F3C;
+     border-radius: 10px;
+     outline: none;
+ }
 
-  .gif-container img {
-      width: 180px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
-  }
+ /* slider thumb */
+ input[type="range"]::-webkit-slider-thumb {
+     appearance: none;
+     width: 20px;
+     height: 20px;
+     background: #00F5FF;
+     border-radius: 50%;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+ }
+
+ /* labels */
+ .labels {
+     display: flex;
+     justify-content: space-between;
+     font-size: 0.9rem;
+     color: #9CA3AF;
+     margin-top: 8px;
+ }
+
+ .feedback {
+     margin-top: 20px;
+     font-size: 1rem;
+     color: #00F5FF;
+ }
+
+ button {
+     margin-top: 25px;
+     padding: 12px;
+     width: 100%;
+     border: none;
+     border-radius: 10px;
+     background: #00F5FF;
+     color: black;
+     font-weight: bold;
+     cursor: pointer;
+ }
+
+ .gif-container {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 20px;
+ }
+
+ .gif-container img {
+     width: 180px;
+     border-radius: 12px;
+     box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+ }

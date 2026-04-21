@@ -9,7 +9,14 @@
 </head>
 
 <body>
+    <div class="grid-overlay"></div>
+
     <div class="box">
+        <div class="progress-area">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+        </div>
         <h1>Awareness Check</h1>
         <p class="question">How aware are you of the digital footprint that you leave behind online?</p>
 
@@ -73,12 +80,11 @@
             localStorage.setItem("q5_awareness_score", score);
             localStorage.setItem("q5_awareness_answer", labels[score])
 
-            window.location.href = "/resultspage";
-
-
         });
 
         updateAwareness(slider.value);
+        window.location.href = "/scan";
+
 
     </script>
 </body>
