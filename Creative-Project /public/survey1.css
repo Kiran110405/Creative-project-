@@ -2,18 +2,23 @@
     box-sizing: border-box;
 }
 
+.app-title {
+    text-shadow:
+        0 0 5px #00F5FF,
+        0 0 10px #00F5FF,
+        0 0 20px rgba(0, 245, 255, 0.5);
+}
+
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
     background: #0e0f13;
     color: #e5e7eb;
-    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 30px;
-    position: relative;
-    overflow: hidden;
 }
 
 
@@ -109,21 +114,17 @@ h1 {
 
 .option-card:hover {
     border-color: #00f5ff;
-    transform: translateY(-2px);
+    transform: translateY(-5px);
     box-shadow: 0 0 14px rgba(0, 245, 255, 0.14);
 }
 
-.option-card input[type="radio"] {
-    accent-color: #00f5ff;
-    transform: scale(1.1);
-    margin-bottom: 10px;
-}
 
 .option-title {
     font-size: 1rem;
     font-weight: 600;
     color: white;
     margin-bottom: 6px;
+    margin-top: 5px;
 }
 
 .option-desc {
@@ -143,7 +144,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 

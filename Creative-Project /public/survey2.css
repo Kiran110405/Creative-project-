@@ -2,18 +2,32 @@
      box-sizing: border-box;
  }
 
+ .app-title {
+     font-size: 2rem;
+     margin-bottom: 25px;
+     position: relative;
+     color: #ffffff;
+     letter-spacing: 0.1em;
+     text-transform: uppercase;
+ }
+
+ .app-title {
+     text-shadow:
+         0 0 5px #00F5FF,
+         0 0 10px #00F5FF,
+         0 0 20px rgba(0, 245, 255, 0.5);
+ }
+
  body {
      margin: 0;
      font-family: "Segoe UI", sans-serif;
-     background: #0E0F13;
-     color: #E5E7EB;
-     min-height: 100vh;
+     background: #0e0f13;
+     color: #e5e7eb;
      display: flex;
+     flex-direction: column;
      justify-content: center;
      align-items: center;
      padding: 30px;
-     position: relative;
-     overflow: hidden;
  }
 
  body::before {
@@ -127,7 +141,7 @@
              16% 16%,
              27% 8%,
              39% 3%);
-     background: radial-gradient(circle at 30% 25%, #F6D092 0%, #D39A52 65%, #B67833 100%);
+     background: radial-gradient(circle at 30% 25%, 0%, #D39A52 65%, #B67833 100%);
      box-shadow:
          inset 0 0 30px rgba(0, 0, 0, 0.18),
          0 0 24px rgba(0, 0, 0, 0.35);
@@ -140,7 +154,7 @@
      left: 0;
      width: 100%;
      height: 0%;
-     background: linear-gradient(to top, #A96A2A, #C9873E, #DCA45B);
+     background: linear-gradient(to top, #A96A2A);
      transition: height 0.45s ease;
      z-index: 1;
  }

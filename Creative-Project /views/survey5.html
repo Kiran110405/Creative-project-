@@ -10,6 +10,7 @@
 
 <body>
     <div class="grid-overlay"></div>
+    <h1 class="app-title">DIGITAL DOPPELGANGER</h1>
 
     <div class="box">
         <div class="progress-area">
@@ -81,10 +82,13 @@
             localStorage.setItem("q5_awareness_score", score);
             localStorage.setItem("q5_awareness_answer", labels[score])
 
+            window.location.href = "/scan";
+
+
         });
 
         updateAwareness(slider.value);
-        window.location.href = "/scan";
+
 
 
     </script>

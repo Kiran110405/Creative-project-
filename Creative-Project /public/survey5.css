@@ -2,13 +2,20 @@
     box-sizing: border-box;
 }
 
+.app-title {
+    text-shadow:
+        0 0 5px #00F5FF,
+        0 0 10px #00F5FF,
+        0 0 20px rgba(0, 245, 255, 0.5);
+}
+
 body {
     margin: 0;
-    font-family: "Segoe UI", san-sarif;
-    background: #0E0F13;
-    color: #E5E7EB;
-    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background: #0e0f13;
+    color: #e5e7eb;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 30px;
