@@ -160,3 +160,25 @@ body {
 .hazard-box h3 {
     margin-top: 0;
 }
+
+.digitaldoppelganger-section {
+    text-align: center;
+    margin-top: 25px;
+    padding: 30px;
+    border: 2px solid lightskyblue;
+    border-radius: 20px;
+    background: rgba(0, 200, 300, 0.08);
+    margin-bottom: 25px;
+}
+
+#doppelgangerCanvas {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#doppelgangerCanvas canvas {
+    border: 2px solid red;
+    border-radius: 15px;
+    box-shadow: 0 0 25px red;
+}
