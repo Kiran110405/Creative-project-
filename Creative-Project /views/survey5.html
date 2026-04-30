@@ -46,7 +46,7 @@
         const slider = document.getElementById("awarenessSlider");
         const image = document.getElementById("digital-footprint-image");
         const feedback = document.getElementById("feedback");
-        const form = document.getElementById("form")
+        const form = document.getElementById("form");
 
         //images blurryness will update to these based on input given  and the answer text below
         function updateAwareness(value) {
@@ -81,6 +81,25 @@
 
             localStorage.setItem("q5_awareness_score", score);
             localStorage.setItem("q5_awareness_answer", labels[score])
+
+            let totalScore = 0;//variable that holds all the scores combined
+
+            //this part gets the scores from each sectoin
+            totalScore += parseInt(localStorage.getItem("q1_posting_score")) || 0;
+            totalScore += parseInt(localStorage.getItem("q2_score")) || 0;
+            totalScore += parseInt(localStorage.getItem("q3_score")) || 0;
+            totalScore += parseInt(localStorage.getItem("q4_score")) || 0;
+            totalScore += parseInt(localStorage.getItem("q5_awareness_score")) || 0;
+
+            if (totalScore <= 30) {
+                localStorage.setItem("digitalResult", "healthy");
+            }
+            else if (totalScore <= 60) {
+                localStorage.setItem("digitalResult", "balanced");
+            }
+            else {
+                localStorage.setItem("digitalResult", "high");
+            }
 
             window.location.href = "/scan";
 
