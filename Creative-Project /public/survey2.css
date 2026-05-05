@@ -11,6 +11,10 @@
      text-transform: uppercase;
  }
 
+ .cookie-heading {
+     margin-left: 70px;
+ }
+
  .app-title {
      text-shadow:
          0 0 5px #00F5FF,
