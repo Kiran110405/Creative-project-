@@ -289,3 +289,118 @@ h1::after {
     line-height: 1.7;
     font-size: 0.96rem;
 }
+
+@media (max-width: 1024px) {
+    .main {
+        padding: 32px 20px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .hero-text {
+        padding: 38px;
+    }
+
+    h1 {
+        font-size: 500%;
+    }
+
+    .visual-panel {
+        min-height: auto;
+    }
+
+    .feature-strip {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .main {
+        padding: 24px 14px;
+        justify-content: flex-start;
+    }
+
+    .hero {
+        gap: 20px;
+    }
+
+    .hero-text,
+    .visual-panel,
+    .feature-card {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+        padding: 7px 10px;
+    }
+
+    h1 {
+        margin: 14px 0;
+        font-size: 300%;
+        line-height: 1;
+    }
+
+    intro-title {
+        font-size: 100%;
+    }
+
+    .intro-text {
+        font-size: 90%;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .data-line {
+        font-size: 90%;
+        gap: 10px;
+    }
+
+    .feature-strip {
+        gap: 14px;
+        margin-top: 20px;
+    }
+
+    .feature-card h3 {
+        font-size: 100%;
+    }
+
+    .feature-card p,
+    .small-text {
+        font-size: 100%;
+    }
+
+
+}
+
+@media (max-width: 380px) {
+    h1 {
+        font-size: 180%;
+    }
+
+    .hero-text,
+    .visual-panel,
+    .feature-card {
+        padding: 18px;
+    }
+
+    .intro-text {
+        font-size: 90%;
+    }
+}
