@@ -170,3 +170,158 @@ button:hover {
     background: #00D4DC;
     transform: scale(1.03);
 }
+
+@media (max-width: 1024px) {
+
+    body {
+        padding: 24px;
+    }
+
+    .survey-box {
+        padding: 30px;
+    }
+
+    .answer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .answer-card {
+        padding: 20px;
+        min-height: 110px;
+    }
+
+    h1 {
+        font-size: 180%;
+    }
+
+    .question-text {
+        font-size: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 16px;
+        justify-content: flex-start;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .app-title {
+        font-size: 125%;
+        text-align: center;
+        margin-bottom: 18px;
+    }
+
+    .survey-box {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .progress-area {
+        margin-bottom: 18px;
+    }
+
+    h1 {
+        font-size: 150%;
+    }
+
+    .question-text {
+        font-size: 100%;
+        margin-bottom: 20px;
+    }
+
+    .answer-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .answer-card {
+        padding: 15px;
+        min-height: auto;
+        border-radius: 15px;
+        gap: 15px;
+    }
+
+    .answer-card:hover {
+        transform: none;
+    }
+
+    .answer-icon {
+        font-size: 170%;
+        width: 40px;
+    }
+
+    .answer-title {
+        font-size: 100%;
+    }
+
+    .answer-desc {
+        font-size: 85%;
+    }
+
+    .button-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .score-preview {
+        text-align: center;
+        font-size: 90%;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        font-size: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .survey-box {
+        padding: 18px;
+    }
+
+    .app-title {
+        font-size: 100%;
+    }
+
+    h1 {
+        font-size: 120%;
+    }
+
+    .question-text {
+        font-size: 90%;
+    }
+
+    .answer-card {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .answer-icon {
+        font-size: 150%;
+        width: 36px;
+    }
+
+    .answer-title {
+        font-size: 90%;
+    }
+
+    .answer-desc {
+        font-size: 80%;
+    }
+
+    button {
+        padding: 12px;
+    }
+}

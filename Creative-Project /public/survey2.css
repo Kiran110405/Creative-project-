@@ -305,3 +305,177 @@
      background: #00D4DC;
      transform: scale(1.03);
  }
+
+ @media (max-width) {
+     body {
+         padding: 24px;
+     }
+
+     .survey-box {
+         max-width: 850px;
+         padding: 30px;
+     }
+
+     .question-layout {
+         grid-template-columns: 1fr;
+         gap: 30px;
+     }
+
+     .cookie {
+         width: 240px;
+         height: 240px
+     }
+
+     .cookie-label {
+         width: 95px;
+         height: 95px;
+         font-size: 80%;
+     }
+
+     h1 {
+         font-size: 180%;
+     }
+
+     .question-text {
+         font-size: 100%;
+     }
+ }
+
+ @media (max-width: 600px) {
+     body {
+         padding: 16px;
+         justify-content: flex-start;
+         min-height: 100vh;
+         overflow-x: hidden;
+     }
+
+     body::before {
+         width: 400px;
+         height: 400px;
+     }
+
+     .app-title {
+         font-size: 100%;
+         text-align: center;
+         margin-bottom: 20px;
+     }
+
+     .survey-box {
+         padding: 20px;
+         border-radius: 20px;
+     }
+
+     .progress-area {
+         margin-bottom: 20px;
+     }
+
+     h1 {
+         font-size: 150%;
+     }
+
+     .question-text {
+         font-size: 100%;
+         margin-bottom: 20px;
+     }
+
+     .question-layout {
+         grid-template-columns: 1fr;
+         gap: 20px;
+     }
+
+     .cookie {
+         width: 200px;
+         height: 200px;
+     }
+
+     .cookie-label {
+         width: 80px;
+         height: 80px;
+         font-size: 70%;
+         padding: 8px;
+     }
+
+     .chips span {
+         width: 10px;
+         height: 10px;
+     }
+
+     .amswer-card {
+         padding: 15px;
+         border-radius: 14px;
+     }
+
+     .answer-card:hover {
+         transform: none;
+     }
+
+     .answer-title {
+         font-size: 100%;
+     }
+
+     .answer-desc {
+         font-size: 80%;
+     }
+
+     .button-row {
+         flex-direction: column;
+         align-items: stretch;
+         gap: 15px;
+     }
+
+     .score-preview {
+         text-align: center;
+         font-size: 80%;
+     }
+
+     button {
+         width: 100%;
+         padding: 15px;
+         font-size: 100%;
+     }
+ }
+
+ @media (max-width: 380px) {
+     body {
+         padding: 12px;
+     }
+
+     .survey-box {
+         padding: 18px;
+     }
+
+     .app-title {
+         font-size: 1.05rem;
+     }
+
+     h1 {
+         font-size: 1.3rem;
+     }
+
+     .question-text {
+         font-size: 0.9rem;
+     }
+
+     .cookie {
+         width: 170px;
+         height: 170px;
+     }
+
+     .cookie-label {
+         width: 72px;
+         height: 72px;
+         font-size: 0.7rem;
+     }
+
+     .answer-title {
+         font-size: 0.9rem;
+     }
+
+     .answer-desc {
+         font-size: 0.8rem;
+     }
+
+     button {
+         padding: 12px;
+     }
+ }
