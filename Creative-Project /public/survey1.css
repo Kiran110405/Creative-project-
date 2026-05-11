@@ -168,3 +168,139 @@ button:hover {
     background: #00d4dc;
     transform: scale(1.03);
 }
+
+@media (max-width: 1024px) {
+
+    body {
+        padding: 24px;
+    }
+
+    .survey-box {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 180%;
+    }
+
+    .question-text {
+        font-size: 100%;
+    }
+
+    .option-card {
+        padding: 16px;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 16px;
+        justify-content: flex-start;
+    }
+
+    body::before {
+        width: 400px;
+        height: 400px;
+        filter: blur(70px);
+    }
+
+    .app-title {
+        font-size: 130%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .survey-box {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .progress-area {
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 150%;
+    }
+
+    .question-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 22px;
+    }
+
+    .options {
+        gap: 12px;
+    }
+
+    .option-card {
+        padding: 15px;
+        border-radius: 14px;
+    }
+
+    .option-card:hover {
+        transform: none;
+    }
+
+    .option-title {
+        font-size: 0.95rem;
+    }
+
+    .option-desc {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .button-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .score-preview {
+        text-align: center;
+        font-size: 0.88rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 12px;
+    }
+
+    .survey-box {
+        padding: 18px;
+    }
+
+    .app-title {
+        font-size: 100%;
+    }
+
+    h1 {
+        font-size: 130%;
+    }
+
+    .question-text {
+        font-size: 100%;
+    }
+
+    .question-title {
+        font-size: 100%;
+    }
+
+    .option-desc {
+        font-size: 80%;
+    }
+
+    button {
+        padding: 12px;
+    }
+}
