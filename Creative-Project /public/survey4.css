@@ -243,15 +243,15 @@
      }
 
      .app-title {
-         font-size: 1.05rem;
+         font-size: 100%;
      }
 
      h1 {
-         font-size: 1.3rem;
+         font-size: 120%;
      }
 
      .question {
-         font-size: 0.9rem;
+         font-size: 100%;
      }
 
      .gif-container img {
@@ -259,11 +259,11 @@
      }
 
      .labels {
-         font-size: 0.62rem;
+         font-size: 60%;
      }
 
      .feedback {
-         font-size: 0.82rem;
+         font-size: 80%;
      }
 
      button {
