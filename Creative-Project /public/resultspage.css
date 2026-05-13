@@ -182,3 +182,121 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 25px red;
 }
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 15px;
+    }
+
+    .report-header {
+        margin-bottom: 20px;
+    }
+
+    .report-tag {
+        font-size: 70%;
+    }
+
+    .report-header h1 {
+        font-size: 170%;
+    }
+
+    .report-subtitle {
+        font-size: 100%;
+    }
+
+    .digitaldoppelganger-section {
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+
+    .digitaldoppelganger-section h2 {
+        font-size: 130%;
+    }
+
+    #doppelgangerCanvas {
+        margin-top: 15px;
+    }
+
+    #doppelgangerCanvas canvas {
+        width: 100% !important;
+        max-width: 280px;
+        height: auto !important;
+        border-radius: 10px;
+    }
+
+    .result-box {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .result-boxh2 {
+        font-size: 150%;
+    }
+
+    .result-summary {
+        font-size: 90%;
+    }
+
+    .score-panel {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .score-card {
+        padding: 20px;
+    }
+
+    .score-card h3 {
+        font-size: 120%;
+    }
+
+    .section-box {
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    .section-box h3 {
+        font-size: 100%;
+        margin-bottom: 15px;
+    }
+
+    .information-box {
+        font-size: 100%;
+    }
+
+    .breakdown-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .breakdown-card {
+        padding: 15px;
+    }
+
+    .breakdown-card h4 {
+        font-size: 100%;
+    }
+
+    .breakdown-card p {
+        font-size: 90%;
+    }
+
+    .characteristics-box ul {
+        padding-left: 20px;
+        font-size: 100%;
+    }
+
+    .hazard-box {
+        padding: 20px;
+        border-radius: 15px;
+        font-size: 90%;
+
+    }
+
+    .hazard-box h3 {
+        font-size: 100%;
+    }
+}
